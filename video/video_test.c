@@ -12,6 +12,8 @@
 #define OK   1
 #define FAIL 0
 
+static int fd;
+
 int video_driver_init()
 {
     return OK;
@@ -20,7 +22,6 @@ int video_driver_init()
 
 void video_driver_get_resolution(int * width, int * height)
 {
-    int fd;
     struct fb_var_screeninfo screen_info;
     fd = open("/dev/fb0",O_RDWR);
     if(fd<0)
