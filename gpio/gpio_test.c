@@ -93,13 +93,36 @@ int gpio_deinit()
     return OK;
 };
 
+int sunxi_gpio_parse_pin_name(const char *pin_name)
+{
+    int pin;
+
+    if (pin_name[0] != 'P')
+        return -1;
+
+    if (pin_name[1] < 'A' || pin_name[1] > 'Z')
+        return -1;
+
+    pin = (pin_name[1] - 'A') << 5;
+    printf("P%c pin=%d\n",pin_name[1],pin);
+//    pin += atoi(pin_name[2]);
+
+    return pin;
+}
+
+
 int main()
 {
+    sunxi_gpio_parse_pin_name("PA");
+    sunxi_gpio_parse_pin_name("PB");
+    sunxi_gpio_parse_pin_name("PG");
+#if 0    
     gpio_init();
     gpio_set_cfgpin(2, 0);
     gpio_input(2);
     gpio_set_cfgpin(3, 1);    
     gpio_output(3, 1);
     gpio_deinit();
+#endif    
     return 0;    
 }

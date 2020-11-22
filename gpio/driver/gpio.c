@@ -60,7 +60,7 @@ static long ioctl(struct file *file, unsigned int cmd, unsigned long arg)
     int ret;
     int i;
     int gpio_num;
-    struct gpio_data *data=(gpio_data*)arg;
+    struct gpio_data *data=(struct gpio_data*)arg;
     char name[128];
     memset(name,"\0",128);
     sprintf(name,"gpio_%d",data->pin);

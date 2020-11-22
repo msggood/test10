@@ -1,7 +1,7 @@
 obj-m += gpio.o
 
 #KERN_DIR = /lib/modules/`uname -r`/build
-KERN_DIR = /home/msg/kernel
+KERN_DIR = /home/msg/linux
 
 all:
 	make -C $(KERN_DIR) M=`pwd` modules
